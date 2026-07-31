@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Poulastya Mukherjee | Robotics & AI Software Engineer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --border: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .title {
+      font-size: 1.25rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .contact-info a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-info a:hover {
+      color: var(--accent);
+    }
+
+    .contact-info i {
+      margin-right: 0.5rem;
+      color: var(--accent);
+    }
+
+    /* Sections */
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-category {
+      background: rgba(15, 23, 42, 0.6);
+      padding: 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .skill-category h3 {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .skill-category p {
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    /* Experience & Education Cards */
+    .timeline-item {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-bottom: 0.25rem;
+    }
+
+    .role {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .date {
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .company {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      color: var(--text-muted);
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    li strong {
+      color: var(--text-main);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .header-row { flex-direction: column; }
+      .date { margin-top: 0.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Hero / Contact -->
+    <header>
+      <h1>Poulastya Mukherjee</h1>
+      <div class="title">Robotics, AI & Mechatronics Software Engineer</div>
+      <div class="contact-info">
+        <div><i class="fa-solid fa-location-dot"></i> Bengaluru, India | Darmstadt, Germany</div>
+        <div><i class="fa-solid fa-envelope"></i> <a href="mailto:poulastyab@gmail.com">poulastyab@gmail.com</a></div>
+        <div><i class="fa-solid fa-phone"></i> +49 176 44431658</div>
+        <div><i class="fa-brands fa-linkedin"></i> <a href="https://www.linkedin.com/in/poulastya-mukherjee-a6795417/" target="_blank">LinkedIn</a></div>
+        <div><i class="fa-brands fa-github"></i> <a href="https://github.com/poulastyamukherjee" target="_blank">GitHub</a></div>
+      </div>
+    </header>
+
+    <!-- Technical Skills -->
+    <section>
+      <h2>Technical Skills & Languages</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Programming Languages</h3>
+          <p>C++, Python</p>
+        </div>
+        <div class="skill-category">
+          <h3>Robotics & CV</h3>
+          <p>ROS, Gazebo, MAVROS, OpenCV, OMPL</p>
+        </div>
+        <div class="skill-category">
+          <h3>Deep Learning</h3>
+          <p>PyTorch, TensorRT</p>
+        </div>
+        <div class="skill-category">
+          <h3>Tools & Protocols</h3>
+          <p>Docker, gRPC, Protobuf, Git, MQTT, TCP/UDP</p>
+        </div>
+        <div class="skill-category">
+          <h3>Languages</h3>
+          <p>English (Fluent), German (Business Proficient)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section>
+      <h2>Professional Experience</h2>
+
+      <div class="timeline-item">
+        <div class="header-row">
+          <span class="role">Mechatronics Technical Lead Engineer</span>
+          <span class="date">01/2026 – Present</span>
+        </div>
+        <div class="company">Lam Research | Bengaluru, India</div>
+        <ul>
+          <li><strong>Development of Dextro Robotics Platform:</strong> Developing service applications for KIYO FX and KIYO FXM process module maintenance to reduce application time by 10% compared to manual benchmarks.</li>
+          <li><strong>Technical Leadership:</strong> Leading decision-making on application architecture and deployment pipeline.</li>
+          <li><strong>Full-Stack Robotics:</strong> Programming Behavior Trees and plugins, developing ROS2 nodes, and writing Universal Robot Programs (URPs).</li>
+          <li><strong>HMI Backend Architecture:</strong> Created a maintainable backend architecture for the HMI to unify various service applications.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="header-row">
+          <span class="role">Drone Software Engineer</span>
+          <span class="date">06/2024 – 01/2026</span>
+        </div>
+        <div class="company">Energy Robotics GmbH | Darmstadt, Germany</div>
+        <ul>
+          <li><strong>Robotics Cloud Platform:</strong> Integrated DJI Dock2 and DJI Dock3 platforms onto the cloud platform, reducing inspection time from 15 to 5 minutes.</li>
+          <li><strong>Thermal Imaging Integration:</strong> Enabled operators to gain greater visibility over customer machines and tanks; successfully detected an oil leakage within hours, avoiding an ecological incident.</li>
+          <li><strong>Drone Landing Algorithm Optimization:</strong> Developed and optimized ArUco marker-based landing algorithms, improving landing accuracy by 5% and reducing landing time by 10% in windy conditions (>4m/s).</li>
+          <li><strong>Safety & Geofencing:</strong> Developed drone geofencing algorithms that reduced safety breach incidents by 90%.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="header-row">
+          <span class="role">Software Engineer AI</span>
+          <span class="date">12/2022 – 05/2024</span>
+        </div>
+        <div class="company">Wingcopter GmbH | Darmstadt, Germany</div>
+        <ul>
+          <li><strong>Automatic Landing Spot Detection:</strong> Trained deep learning models for semantic segmentation with SOTA accuracy; optimized and deployed models on Jetson Xavier using TensorRT, improving inference time by 80%.</li>
+          <li><strong>DAA System & MAVROS Integration:</strong> Developed and maintained C++ and Python drone ROS packages for flight path control.</li>
+          <li><strong>System Monitoring & CI/CD:</strong> Developed a system monitor that improved error detection by 20% and improved GitHub CI/CD pipelines to reduce automated testing time by 15%.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="header-row">
+          <span class="role">Application Software Developer</span>
+          <span class="date">07/2021 – 11/2022</span>
+        </div>
+        <div class="company">DMG MORI Digital GmbH | Bielefeld, Germany</div>
+        <ul>
+          <li><strong>Backend Application Development:</strong> Built cloud-based communication systems between CNCs and operator computers using Docker, Python, gRPC, and TCP/UDP protocols.</li>
+          <li><strong>Cloud & DevOps:</strong> Deployed IoT solutions to Azure IoT platform and managed artifact deployments via Artifactory.</li>
+          <li><strong>Requirement Analysis:</strong> Performed project estimation and analysis by collaborating with senior developers, PMs, and architects.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="header-row">
+          <span class="role">Robotics Software Engineer</span>
+          <span class="date">01/2018 – 06/2021</span>
+        </div>
+        <div class="company">Duespohl Machinebau | Schloss Holte, Germany</div>
+        <ul>
+          <li><strong>Windows Application Development:</strong> Built backend control and communication software for robots using C++ and Qt; created desktop GUI applications using Qt/QML.</li>
+          <li><strong>3D Vision & Object Detection:</strong> Optimized object recognition algorithms for 2D point cloud data using novel geometry-based methods (improving accuracy by 50%) and multi-threading/OpenMP (40% performance boost).</li>
+          <li><strong>Robot Calibration:</strong> Programmed Mitsubishi RV2F robots and engineered a novel calibration technique that improved repeatability by 10%.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="header-row">
+          <span class="role">Research Assistant</span>
+          <span class="date">04/2015 – 12/2017</span>
+        </div>
+        <div class="company">Fraunhofer IPA | Stuttgart, Germany</div>
+        <ul>
+          <li><strong>Automatic Welding & Positioning:</strong> Developed an AI-based solution for optimal workpiece positioning on a 2DOF rotary table and automatic welding path generation using RRT* algorithms.</li>
+          <li><strong>Cloud-Based Robot Navigation:</strong> Developed a cloud deployment system for ROS navigation packages using Python, ROS, and Docker, achieving a 50% time improvement over traditional deployment methods.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="header-row">
+          <span class="role">Software Quality Assurance Engineer</span>
+          <span class="date">09/2012 – 09/2014</span>
+        </div>
+        <div class="company">Tata Consultancy Services | Kolkata, India</div>
+        <ul>
+          <li><strong>Mainframe & Web Testing:</strong> Performed test plan development and testing for UNIX-based mainframe systems and multi-page web applications for a major global banking client.</li>
+          <li><strong>Test Automation & Leadership:</strong> Developed partial test automation scripts using Python and served as the Single Point of Contact (SPOC) leading a team of QA engineers.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section>
+      <h2>Education</h2>
+      <div class="timeline-item">
+        <div class="header-row">
+          <span class="role">M.Sc. in Autonomous Systems</span>
+          <span class="date">09/2014 – 09/2017</span>
+        </div>
+        <div class="company">Hochschule Bonn-Rhein-Sieg | Bonn, Germany</div>
+      </div>
+      <div class="timeline-item">
+        <div class="header-row">
+          <span class="role">B.Tech in Electronics & Instrumentation</span>
+          <span class="date">08/2008 – 07/2012</span>
+        </div>
+        <div class="company">West Bengal University of Technology | Kolkata, India</div>
+      </div>
+    </section>
+
+    <!-- Publications & Awards -->
+    <section>
+      <h2>Publications & Awards</h2>
+      <div class="timeline-item">
+        <div class="header-row">
+          <span class="role">Publication</span>
+          <span class="date">2018</span>
+        </div>
+        <div class="company">Automatic Close-optimal Workpiece Positioning for Robotic Manufacturing</div>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Diaz Posada, Julian & Mukherjee, Poulastya & Verl, Alexander. (2018), <em>Procedia CIRP</em>.</p>
+      </div>
+      <div class="timeline-item">
+        <div class="header-row">
+          <span class="role">Award</span>
+          <span class="date">2016</span>
+        </div>
+        <div class="company">Hacker's Choice Award</div>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Stuttgart Hackathon</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Poulastya Mukherjee. Hosted on GitHub Pages.</p>
+    </footer>
+
+  </div>
+</body>
+</html>
