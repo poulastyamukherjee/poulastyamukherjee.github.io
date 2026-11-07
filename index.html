@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Poulastya Mukherjee | Robotics & AI Software Engineer</title>
+  <meta name="description" content="Portfolio of Poulastya Mukherjee — Robotics, Mechatronics & AI Software Engineer specializing in autonomous systems, ROS/ROS2, computer vision, and deep learning deployment." />
+  <meta property="og:title" content="Poulastya Mukherjee | Robotics & AI Software Engineer" />
+  <meta property="og:description" content="12+ years building autonomous drones, semiconductor robotics, 3D vision, and edge AI systems at Lam Research, Energy Robotics, Wingcopter, DMG MORI, Duespohl, and Fraunhofer IPA." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://poulastyamukherjee.github.io/" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     :root {
       --bg-canvas: #0d1117;
       --bg-card: #161b22;
+      --bg-card-elevated: #1c2128;
       --bg-tag: #21262d;
       --border-color: #30363d;
       --text-main: #c9d1d9;
@@ -16,8 +22,31 @@
       --text-muted: #8b949e;
       --accent: #58a6ff;
       --accent-hover: #1f6feb;
+      --accent-soft: rgba(88, 166, 255, 0.12);
       --yt-red: #ff4e45;
       --paper-green: #3fb950;
+      --lead-gold: #d29922;
+      --nav-bg: rgba(13, 17, 23, 0.88);
+      --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    html[data-theme="light"] {
+      --bg-canvas: #f6f8fa;
+      --bg-card: #ffffff;
+      --bg-card-elevated: #f0f3f6;
+      --bg-tag: #eaeef2;
+      --border-color: #d0d7de;
+      --text-main: #24292f;
+      --text-bright: #1f2328;
+      --text-muted: #57606a;
+      --accent: #0969da;
+      --accent-hover: #0550ae;
+      --accent-soft: rgba(9, 105, 218, 0.1);
+      --yt-red: #cf222e;
+      --paper-green: #1a7f37;
+      --lead-gold: #9a6700;
+      --nav-bg: rgba(246, 248, 250, 0.9);
+      --shadow-card: 0 2px 10px rgba(31, 35, 40, 0.06);
     }
 
     * {
@@ -26,12 +55,103 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
       background-color: var(--bg-canvas);
       color: var(--text-main);
       line-height: 1.6;
-      padding: 2rem 1.5rem;
+      padding: 0 1.5rem 2.5rem;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* --- STICKY TOP NAVIGATION --- */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      margin: 0 -1.5rem 2rem;
+      padding: 0.7rem 1.5rem;
+    }
+
+    .top-nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text-bright);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-brand i {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 0.35rem 0.65rem;
+      border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+    }
+
+    .nav-link:hover {
+      color: var(--text-bright);
+      background: var(--bg-tag);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .icon-action-btn {
+      background: var(--bg-tag);
+      border: 1px solid var(--border-color);
+      color: var(--text-bright);
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: inherit;
+      transition: all 0.2s ease;
+    }
+
+    .icon-action-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     .layout {
@@ -50,42 +170,128 @@
       border-radius: 12px;
       padding: 2rem 1.5rem;
       position: sticky;
-      top: 2rem;
+      top: 4.5rem;
+      box-shadow: var(--shadow-card);
     }
 
-    .avatar-placeholder {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      background: var(--bg-tag);
-      border: 2px solid var(--border-color);
+    .avatar-wrapper {
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 2.2rem;
-      font-weight: bold;
-      color: var(--accent);
+      gap: 1rem;
       margin-bottom: 1rem;
     }
 
+    .avatar-placeholder {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--bg-tag), var(--bg-card-elevated));
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .status-dot {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--paper-green);
+      border: 2px solid var(--bg-card);
+    }
+
+    .role-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--paper-green);
+      background: rgba(63, 185, 80, 0.12);
+      border: 1px solid rgba(63, 185, 80, 0.35);
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      margin-bottom: 0.85rem;
+    }
+
     .sidebar h1 {
-      font-size: 1.6rem;
+      font-size: 1.55rem;
       color: var(--text-bright);
       line-height: 1.2;
       margin-bottom: 0.25rem;
     }
 
     .sidebar .username {
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
-      margin-bottom: 1.25rem;
+      margin-bottom: 0.85rem;
       font-family: monospace;
     }
 
     .sidebar .bio {
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
+      font-size: 0.92rem;
+      margin-bottom: 1.25rem;
       color: var(--text-main);
+    }
+
+    .sidebar-cta-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .btn-primary-cta {
+      background: var(--accent);
+      color: #ffffff;
+      border: 1px solid var(--accent);
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      font-family: inherit;
+      transition: background 0.2s ease;
+    }
+
+    .btn-primary-cta:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-secondary-cta {
+      background: var(--bg-tag);
+      color: var(--text-bright);
+      border: 1px solid var(--border-color);
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      font-family: inherit;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-secondary-cta:hover {
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     .contact-list {
@@ -93,7 +299,7 @@
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       border-top: 1px solid var(--border-color);
       padding-top: 1.25rem;
     }
@@ -103,13 +309,14 @@
       align-items: center;
       gap: 0.75rem;
       color: var(--text-muted);
-      word-break: break-all;
+      word-break: break-word;
     }
 
     .contact-list i {
       width: 18px;
       color: var(--text-muted);
       text-align: center;
+      flex-shrink: 0;
     }
 
     .contact-list a {
@@ -121,11 +328,33 @@
       text-decoration: underline;
     }
 
+    .inline-mini-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      border-radius: 4px;
+      padding: 0.1rem 0.4rem;
+      font-size: 0.72rem;
+      cursor: pointer;
+      margin-left: auto;
+      font-family: inherit;
+      transition: all 0.15s ease;
+    }
+
+    .inline-mini-btn:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
     /* --- MAIN CONTENT --- */
     .main-content {
       display: flex;
       flex-direction: column;
-      gap: 2.5rem;
+      gap: 2.25rem;
+    }
+
+    section {
+      scroll-margin-top: 4.5rem;
     }
 
     section h2 {
@@ -133,51 +362,299 @@
       color: var(--text-bright);
       border-bottom: 1px solid var(--border-color);
       padding-bottom: 0.5rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
 
     section h2 i {
-      color: var(--text-muted);
-      font-size: 1.1rem;
+      color: var(--accent);
+      font-size: 1.05rem;
     }
 
-    /* Skills Tags */
+    .section-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .section-header-row h2 {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+
+    /* --- IMPACT METRICS STRIP --- */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.85rem;
+    }
+
+    .metric-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.1rem 1rem;
+      box-shadow: var(--shadow-card);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+
+    .metric-value {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.2;
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-bright);
+      margin-bottom: 0.15rem;
+    }
+
+    .metric-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* --- FEATURED VIDEO DEMOS GRID --- */
+    .demos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .demo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-card);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .demo-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .demo-visual {
+      position: relative;
+      height: 148px;
+      background: linear-gradient(135deg, #121d2f 0%, #1b2838 50%, #0f172a 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+
+    .demo-visual-pattern {
+      position: absolute;
+      right: -10px;
+      bottom: -15px;
+      font-size: 5.5rem;
+      color: rgba(88, 166, 255, 0.1);
+      pointer-events: none;
+    }
+
+    .demo-badge-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .demo-company-pill {
+      background: rgba(13, 17, 23, 0.78);
+      color: #f0f6fc;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.74rem;
+      font-weight: 600;
+    }
+
+    .demo-impact-pill {
+      background: rgba(63, 185, 80, 0.2);
+      color: #56d364;
+      border: 1px solid rgba(63, 185, 80, 0.4);
+      padding: 0.18rem 0.55rem;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+
+    .demo-visual-title {
+      z-index: 1;
+      color: #f0f6fc;
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .demo-visual-title i {
+      color: var(--yt-red);
+      font-size: 1.2rem;
+    }
+
+    .demo-body {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+      gap: 0.85rem;
+    }
+
+    .demo-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .demo-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* --- CATEGORIZED SKILLS & INTERACTIVE FILTER --- */
+    .filter-hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .skills-categories {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 1.25rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .skill-group {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      align-items: baseline;
+      gap: 0.75rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px dashed var(--border-color);
+    }
+
+    .skill-group:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .skill-group-title {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
     .skills-wrapper {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
+      gap: 0.45rem;
     }
 
     .tag {
       background: var(--bg-tag);
       border: 1px solid var(--border-color);
       color: var(--text-bright);
-      padding: 0.35rem 0.75rem;
+      padding: 0.3rem 0.75rem;
       border-radius: 20px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      user-select: none;
     }
 
-    .tag-highlight {
+    .tag:hover {
       border-color: var(--accent);
       color: var(--accent);
     }
 
-    /* Experience Cards */
+    .tag-highlight {
+      border-color: rgba(88, 166, 255, 0.5);
+      color: var(--accent);
+    }
+
+    .tag.active-filter {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    /* --- EXPERIENCE CARDS --- */
+    .filter-status-bar {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--accent-soft);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 0.55rem 0.9rem;
+      margin-bottom: 1rem;
+      font-size: 0.85rem;
+      color: var(--text-bright);
+    }
+
+    .filter-status-bar.visible {
+      display: flex;
+    }
+
     .exp-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
-      border-radius: 8px;
+      border-radius: 10px;
       padding: 1.5rem;
       margin-bottom: 1rem;
-      transition: border-color 0.2s;
+      box-shadow: var(--shadow-card);
+      transition: border-color 0.2s, opacity 0.2s, transform 0.2s;
     }
 
     .exp-card:hover {
       border-color: var(--text-muted);
+    }
+
+    .exp-card.filtered-out {
+      display: none;
+    }
+
+    .exp-card.filtered-match {
+      border-color: var(--accent);
     }
 
     .exp-header {
@@ -186,7 +663,14 @@
       align-items: flex-start;
       flex-wrap: wrap;
       gap: 0.5rem;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .exp-role-group {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-wrap: wrap;
     }
 
     .exp-role {
@@ -195,19 +679,30 @@
       color: var(--text-bright);
     }
 
+    .lead-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--lead-gold);
+      background: rgba(210, 153, 34, 0.14);
+      border: 1px solid rgba(210, 153, 34, 0.4);
+      padding: 0.15rem 0.55rem;
+      border-radius: 12px;
+    }
+
     .exp-date {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--text-muted);
       background: var(--bg-tag);
-      padding: 0.2rem 0.6rem;
+      padding: 0.2rem 0.65rem;
       border-radius: 12px;
       white-space: nowrap;
     }
 
     .exp-company {
-      font-size: 0.95rem;
+      font-size: 0.94rem;
       color: var(--accent);
-      margin-bottom: 1rem;
+      margin-bottom: 0.9rem;
+      font-weight: 500;
     }
 
     .exp-card ul {
@@ -228,13 +723,30 @@
       color: var(--text-bright);
     }
 
+    .role-tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.95rem;
+    }
+
+    .role-tech-pill {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-color);
+      padding: 0.15rem 0.55rem;
+      border-radius: 6px;
+      font-family: monospace;
+    }
+
     /* Media & Paper Action Links inside Cards */
     .exp-links {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 0.6rem;
-      margin-top: 1.1rem;
+      margin-top: 1rem;
       padding-top: 0.9rem;
       border-top: 1px dashed var(--border-color);
     }
@@ -259,7 +771,7 @@
     .media-btn:hover {
       border-color: var(--accent);
       color: var(--accent);
-      background: rgba(88, 166, 255, 0.08);
+      background: var(--accent-soft);
     }
 
     .media-btn i.fa-youtube,
@@ -268,7 +780,8 @@
     }
 
     .media-btn i.fa-file-lines,
-    .media-btn i.fa-book-open {
+    .media-btn i.fa-book-open,
+    .media-btn i.fa-quote-right {
       color: var(--paper-green);
     }
 
@@ -298,12 +811,20 @@
     }
 
     /* Simple List (Education & Publications) */
+    .card-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 0.5rem 1.5rem;
+      box-shadow: var(--shadow-card);
+    }
+
     .simple-item {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       border-bottom: 1px solid var(--border-color);
-      padding: 0.75rem 0;
+      padding: 1rem 0;
       gap: 1rem;
     }
 
@@ -314,7 +835,7 @@
     .simple-title {
       color: var(--text-bright);
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.96rem;
     }
 
     .simple-title a {
@@ -331,7 +852,15 @@
     .simple-subtitle {
       color: var(--text-muted);
       font-size: 0.85rem;
-      margin-top: 0.15rem;
+      margin-top: 0.2rem;
+    }
+
+    .pub-actions-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.65rem;
     }
 
     .pub-link-inline {
@@ -342,11 +871,58 @@
       text-decoration: none;
       font-size: 0.82rem;
       font-weight: 500;
-      margin-top: 0.35rem;
     }
 
     .pub-link-inline:hover {
       text-decoration: underline;
+    }
+
+    .abstract-box {
+      display: none;
+      margin-top: 0.75rem;
+      padding: 0.85rem 1rem;
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-color);
+      border-left: 3px solid var(--paper-green);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+    }
+
+    .abstract-box.active {
+      display: block;
+    }
+
+    /* Toast Notification */
+    .toast-notification {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background: var(--bg-card-elevated);
+      color: var(--text-bright);
+      border: 1px solid var(--accent);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 999;
+    }
+
+    .toast-notification.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .toast-notification i {
+      color: var(--paper-green);
     }
 
     footer {
@@ -359,7 +935,7 @@
     }
 
     /* Responsive Design */
-    @media (max-width: 850px) {
+    @media (max-width: 900px) {
       .layout {
         grid-template-columns: 1fr;
         gap: 1.5rem;
@@ -369,38 +945,139 @@
         position: static;
       }
 
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .demos-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skill-group {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+      }
+
       .simple-item {
         flex-direction: column;
         gap: 0.35rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* Clean PDF / Print Resume Layout */
+    @media print {
+      body {
+        background: #ffffff;
+        color: #000000;
+        padding: 0;
+      }
+      .top-nav,
+      .demos-section,
+      .exp-links,
+      .sidebar-cta-group,
+      .inline-mini-btn,
+      .filter-hint,
+      .filter-status-bar,
+      .pub-actions-row,
+      .toast-notification {
+        display: none !important;
+      }
+      .layout {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .sidebar,
+      .exp-card,
+      .metric-card,
+      .skills-categories,
+      .card-panel {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="layout">
+  <!-- STICKY NAVIGATION BAR -->
+  <nav class="top-nav">
+    <div class="top-nav-inner">
+      <a href="#top" class="nav-brand">
+        <i class="fa-solid fa-robot"></i>
+        <span>Poulastya Mukherjee</span>
+      </a>
+      <div class="nav-links">
+        <a href="#highlights" class="nav-link">Highlights</a>
+        <a href="#demos" class="nav-link">Featured Demos</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#publications" class="nav-link">Publications</a>
+      </div>
+      <div class="nav-actions">
+        <button type="button" id="theme-toggle-btn" class="icon-action-btn" title="Switch Dark / Light Theme">
+          <i class="fa-solid fa-sun" id="theme-icon"></i>
+          <span id="theme-label">Light Mode</span>
+        </button>
+        <button type="button" id="nav-print-btn" class="icon-action-btn" title="Print or Save as PDF Resume">
+          <i class="fa-solid fa-file-pdf"></i>
+          <span>Save CV</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="layout" id="top">
     
     <!-- LEFT SIDEBAR: Profile & Contact -->
     <aside class="sidebar">
-      <div class="avatar-placeholder">PM</div>
-      <h1>Poulastya Mukherjee</h1>
-      <div class="username">@poulastyamukherjee</div>
+      <div class="avatar-wrapper">
+        <div class="avatar-placeholder" title="Poulastya Mukherjee">
+          PM
+          <span class="status-dot" title="Active Technical Lead"></span>
+        </div>
+        <div>
+          <h1>Poulastya Mukherjee</h1>
+          <div class="username">@poulastyamukherjee</div>
+        </div>
+      </div>
+
+      <div class="role-badge-pill">
+        <i class="fa-solid fa-microchip"></i> Mechatronics &amp; Robotics Tech Lead
+      </div>
+
       <p class="bio">
-        Robotics, Mechatronics & AI Software Engineer specializing in autonomous systems, ROS/ROS2, and deep learning deployment.
+        Robotics, Mechatronics &amp; AI Software Engineer specializing in autonomous systems, ROS/ROS2, 3D computer vision, and deep learning deployment.
       </p>
+
+      <div class="sidebar-cta-group">
+        <button type="button" id="sidebar-print-btn" class="btn-primary-cta">
+          <i class="fa-solid fa-download"></i> Download CV
+        </button>
+        <button type="button" id="copy-email-cta" class="btn-secondary-cta" data-email="poulastyab@gmail.com">
+          <i class="fa-regular fa-copy"></i> Copy Email
+        </button>
+      </div>
       
       <ul class="contact-list">
         <li>
           <i class="fa-solid fa-location-dot"></i>
-          <span>Bengaluru, India / Darmstadt, Germany</span>
+          <span>Bengaluru, India </span>
         </li>
         <li>
           <i class="fa-solid fa-envelope"></i>
           <a href="mailto:poulastyab@gmail.com">poulastyab@gmail.com</a>
-        </li>
-        <li>
-          <i class="fa-solid fa-phone"></i>
-          <span>+49 176 44431658</span>
+          <button type="button" class="inline-mini-btn copy-text-btn" data-copy="poulastyab@gmail.com" title="Copy email address">Copy</button>
         </li>
         <li>
           <i class="fa-brands fa-linkedin"></i>
@@ -410,43 +1087,237 @@
           <i class="fa-brands fa-github"></i>
           <a href="https://github.com/poulastyamukherjee" target="_blank" rel="noopener noreferrer">poulastyamukherjee</a>
         </li>
+        <li>
+          <i class="fa-solid fa-graduation-cap"></i>
+          <a href="https://www.sciencedirect.com/science/article/pii/S2212827118302993" target="_blank" rel="noopener noreferrer">Procedia CIRP Publication</a>
+        </li>
       </ul>
     </aside>
 
-    <!-- RIGHT COLUMN: Experience, Skills, Education -->
+    <!-- RIGHT COLUMN: Highlights, Demos, Skills, Experience, Education, Publications -->
     <main class="main-content">
 
-      <!-- Skills Section -->
-      <section>
-        <h2><i class="fa-solid fa-code"></i> Skills & Technologies</h2>
-        <div class="skills-wrapper">
-          <span class="tag tag-highlight">C++</span>
-          <span class="tag tag-highlight">Python</span>
-          <span class="tag tag-highlight">ROS / ROS2</span>
-          <span class="tag">Gazebo</span>
-          <span class="tag">MAVROS</span>
-          <span class="tag">PyTorch</span>
-          <span class="tag">TensorRT</span>
-          <span class="tag">OpenCV</span>
-          <span class="tag">OMPL</span>
-          <span class="tag">Docker</span>
-          <span class="tag">gRPC / Protobuf</span>
-          <span class="tag">MQTT</span>
-          <span class="tag">TCP / UDP</span>
-          <span class="tag">Git</span>
-          <span class="tag">English (Fluent)</span>
-          <span class="tag">German (Business)</span>
+      <!-- Career Impact Highlights Section -->
+      <section id="highlights">
+        <h2><i class="fa-solid fa-chart-line"></i> Engineering Impact Highlights</h2>
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-value">12+ Yrs</div>
+            <div class="metric-label">Robotics &amp; AI Engineering</div>
+            <div class="metric-sub">Germany &amp; India (2012 – Present)</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">80% Faster</div>
+            <div class="metric-label">Edge AI Inference</div>
+            <div class="metric-sub">TensorRT on Jetson Xavier (Wingcopter)</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">90% Fewer</div>
+            <div class="metric-label">Safety Breach Incidents</div>
+            <div class="metric-sub">Autonomous Drone Geofencing</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-value">15 → 5 Min</div>
+            <div class="metric-label">Autonomous Inspection</div>
+            <div class="metric-sub">DJI Dock2/3 Cloud Integration</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Featured Robotics & AI Video Demos Section -->
+      <section id="demos" class="demos-section">
+        <h2><i class="fa-solid fa-clapperboard"></i> Featured Robotics &amp; AI Systems in Action</h2>
+        <div class="demos-grid">
+
+          <!-- Demo 1: Lam Research Dextro -->
+          <div class="demo-card">
+            <div class="demo-visual">
+              <i class="fa-solid fa-microchip demo-visual-pattern"></i>
+              <div class="demo-badge-row">
+                <span class="demo-company-pill">Lam Research · 2026</span>
+                <span class="demo-impact-pill">-10% Maintenance Time</span>
+              </div>
+              <div class="demo-visual-title">
+                <i class="fa-brands fa-youtube"></i>
+                <span>Dextro Collaborative Wafer Fab Robotics</span>
+              </div>
+            </div>
+            <div class="demo-body">
+              <p class="demo-desc">
+                Automated KIYO FX and KIYO FXM process module maintenance using ROS2, Behavior Trees, Universal Robot Programs (URPs), and a unified HMI backend.
+              </p>
+              <div class="demo-actions">
+                <button type="button" class="media-btn demo-jump-btn" data-exp-target="video-lam">
+                  <i class="fa-solid fa-circle-play"></i> Watch Inline
+                </button>
+                <a href="https://www.youtube.com/watch?v=cOcYCINuZDs" target="_blank" rel="noopener noreferrer" class="media-btn">
+                  <i class="fa-brands fa-youtube"></i> YouTube <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Demo 2: Energy Robotics / Korial -->
+          <div class="demo-card">
+            <div class="demo-visual">
+              <i class="fa-solid fa-helicopter demo-visual-pattern"></i>
+              <div class="demo-badge-row">
+                <span class="demo-company-pill">Energy Robotics (Korial)</span>
+                <span class="demo-impact-pill">3× Faster Inspection</span>
+              </div>
+              <div class="demo-visual-title">
+                <i class="fa-brands fa-youtube"></i>
+                <span>Autonomous Drone Inspection &amp; Thermal AI</span>
+              </div>
+            </div>
+            <div class="demo-body">
+              <p class="demo-desc">
+                Cloud-integrated DJI Dock2/Dock3 autonomous missions, thermal oil-leak detection, 90% safer geofencing, and ArUco precision landing in &gt;4 m/s winds.
+              </p>
+              <div class="demo-actions">
+                <button type="button" class="media-btn demo-jump-btn" data-exp-target="video-korial">
+                  <i class="fa-solid fa-circle-play"></i> Watch Inline
+                </button>
+                <a href="https://www.youtube.com/watch?v=X5uKMhrCvnU" target="_blank" rel="noopener noreferrer" class="media-btn">
+                  <i class="fa-brands fa-youtube"></i> YouTube <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Demo 3: Wingcopter -->
+          <div class="demo-card">
+            <div class="demo-visual">
+              <i class="fa-solid fa-plane-up demo-visual-pattern"></i>
+              <div class="demo-badge-row">
+                <span class="demo-company-pill">Wingcopter GmbH</span>
+                <span class="demo-impact-pill">80% Faster Inference</span>
+              </div>
+              <div class="demo-visual-title">
+                <i class="fa-brands fa-youtube"></i>
+                <span>Autonomous Delivery Drone &amp; Landing Vision</span>
+              </div>
+            </div>
+            <div class="demo-body">
+              <p class="demo-desc">
+                SOTA semantic segmentation for UAV landing spot detection deployed on NVIDIA Jetson Xavier with TensorRT, plus DAA &amp; MAVROS flight control packages.
+              </p>
+              <div class="demo-actions">
+                <button type="button" class="media-btn demo-jump-btn" data-exp-target="video-wingcopter">
+                  <i class="fa-solid fa-circle-play"></i> Watch Inline
+                </button>
+                <a href="https://www.youtube.com/watch?v=P8U9CUtVR0Y" target="_blank" rel="noopener noreferrer" class="media-btn">
+                  <i class="fa-brands fa-youtube"></i> YouTube <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Demo 4: Duespohl Maschinenbau -->
+          <div class="demo-card">
+            <div class="demo-visual">
+              <i class="fa-solid fa-industry demo-visual-pattern"></i>
+              <div class="demo-badge-row">
+                <span class="demo-company-pill">Duespohl Maschinenbau</span>
+                <span class="demo-impact-pill">+50% Vision Accuracy</span>
+              </div>
+              <div class="demo-visual-title">
+                <i class="fa-brands fa-youtube"></i>
+                <span>Industrial Robot Calibration &amp; 3D Vision</span>
+              </div>
+            </div>
+            <div class="demo-body">
+              <p class="demo-desc">
+                OpenMP-accelerated point cloud object recognition, Mitsubishi RV2F robot calibration (+10% repeatability), and C++/Qt/QML operator control interfaces.
+              </p>
+              <div class="demo-actions">
+                <button type="button" class="media-btn demo-jump-btn" data-exp-target="video-duespohl">
+                  <i class="fa-solid fa-circle-play"></i> Watch Inline (01:34)
+                </button>
+                <a href="https://www.youtube.com/watch?v=pAPmkqw3euc&t=94s" target="_blank" rel="noopener noreferrer" class="media-btn">
+                  <i class="fa-brands fa-youtube"></i> YouTube <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.7rem;"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Skills Section (Categorized + Interactive Filter) -->
+      <section id="skills">
+        <div class="section-header-row">
+          <h2><i class="fa-solid fa-code"></i> Skills &amp; Technologies</h2>
+          <div class="filter-hint">
+            <i class="fa-solid fa-filter"></i>
+            <span>Click any skill to filter matching roles below</span>
+          </div>
+        </div>
+
+        <div class="skills-categories">
+          <div class="skill-group">
+            <div class="skill-group-title"><i class="fa-solid fa-robot"></i> Robotics &amp; Control</div>
+            <div class="skills-wrapper">
+              <span class="tag tag-highlight skill-filter-tag" data-skill="C++">C++</span>
+              <span class="tag tag-highlight skill-filter-tag" data-skill="Python">Python</span>
+              <span class="tag tag-highlight skill-filter-tag" data-skill="ROS / ROS2">ROS / ROS2</span>
+              <span class="tag skill-filter-tag" data-skill="Behavior Trees">Behavior Trees</span>
+              <span class="tag skill-filter-tag" data-skill="Gazebo">Gazebo</span>
+              <span class="tag skill-filter-tag" data-skill="MAVROS">MAVROS</span>
+              <span class="tag skill-filter-tag" data-skill="OMPL">OMPL</span>
+              <span class="tag skill-filter-tag" data-skill="URP">Universal Robots (URP)</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title"><i class="fa-solid fa-eye"></i> AI &amp; Vision</div>
+            <div class="skills-wrapper">
+              <span class="tag tag-highlight skill-filter-tag" data-skill="PyTorch">PyTorch</span>
+              <span class="tag tag-highlight skill-filter-tag" data-skill="TensorRT">TensorRT</span>
+              <span class="tag skill-filter-tag" data-skill="OpenCV">OpenCV</span>
+              <span class="tag skill-filter-tag" data-skill="3D Vision">3D Point Clouds</span>
+              <span class="tag skill-filter-tag" data-skill="ArUco">ArUco / Thermal Vision</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title"><i class="fa-solid fa-cloud"></i> Cloud &amp; Systems</div>
+            <div class="skills-wrapper">
+              <span class="tag skill-filter-tag" data-skill="Docker">Docker</span>
+              <span class="tag skill-filter-tag" data-skill="gRPC / Protobuf">gRPC / Protobuf</span>
+              <span class="tag skill-filter-tag" data-skill="MQTT">MQTT</span>
+              <span class="tag skill-filter-tag" data-skill="TCP / UDP">TCP / UDP</span>
+              <span class="tag skill-filter-tag" data-skill="Qt / QML">Qt / QML</span>
+              <span class="tag skill-filter-tag" data-skill="Git">Git / CI/CD</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-title"><i class="fa-solid fa-language"></i> Languages</div>
+            <div class="skills-wrapper">
+              <span class="tag" data-skill="all">English (Fluent)</span>
+              <span class="tag" data-skill="all">German (Business)</span>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- Professional Experience Section -->
-      <section>
+      <section id="experience">
         <h2><i class="fa-solid fa-briefcase"></i> Experience</h2>
 
+        <div id="filter-status-bar" class="filter-status-bar">
+          <span id="filter-status-text">Showing roles matching skill</span>
+          <button type="button" id="clear-filter-btn" class="inline-mini-btn">Show All Roles</button>
+        </div>
+
         <!-- Lam Research -->
-        <div class="exp-card">
+        <div class="exp-card" data-skills="C++,Python,ROS / ROS2,Behavior Trees,URP,Git">
           <div class="exp-header">
-            <span class="exp-role">Mechatronics Technical Lead Engineer</span>
+            <div class="exp-role-group">
+              <span class="exp-role">Mechatronics Technical Lead Engineer</span>
+              <span class="lead-badge"><i class="fa-solid fa-star"></i> Current Tech Lead</span>
+            </div>
             <span class="exp-date">01/2026 – Present</span>
           </div>
           <div class="exp-company">Lam Research · Bengaluru, India</div>
@@ -456,6 +1327,14 @@
             <li><strong>Full-Stack Robotics:</strong> Programming Behavior Trees/plugins, ROS2 nodes, and writing Universal Robot Programs (URPs).</li>
             <li><strong>HMI Architecture:</strong> Built a maintainable backend architecture for HMI to unify various service applications.</li>
           </ul>
+          <div class="role-tech-stack">
+            <span class="role-tech-pill">ROS2</span>
+            <span class="role-tech-pill">Behavior Trees</span>
+            <span class="role-tech-pill">C++</span>
+            <span class="role-tech-pill">Python</span>
+            <span class="role-tech-pill">Universal Robots (URP)</span>
+            <span class="role-tech-pill">HMI Backend</span>
+          </div>
           <div class="exp-links">
             <button type="button" class="media-btn video-toggle-btn" data-target="video-lam" data-src="https://www.youtube.com/embed/cOcYCINuZDs">
               <i class="fa-solid fa-circle-play"></i> Preview: Lam Research Dextro
@@ -468,18 +1347,27 @@
         </div>
 
         <!-- Energy Robotics -->
-        <div class="exp-card">
+        <div class="exp-card" data-skills="C++,Python,ROS / ROS2,OpenCV,ArUco,Docker,MQTT">
           <div class="exp-header">
             <span class="exp-role">Drone Software Engineer</span>
             <span class="exp-date">06/2024 – 01/2026</span>
           </div>
-          <div class="exp-company">Energy Robotics GmbH · Darmstadt, Germany</div>
+          <div class="exp-company">Energy Robotics GmbH · Darmstadt, Germany · (Featured in Korial Drone Inspection Deployment)</div>
           <ul>
             <li><strong>Cloud Integration:</strong> Integrated DJI Dock2 and Dock3 platforms onto the cloud platform, cutting inspection time from 15 to 5 minutes.</li>
             <li><strong>Thermal Imaging:</strong> Integrated thermal imaging capabilities; detected an urgent oil leakage at a customer site within hours, preventing an ecological incident.</li>
-            <li><strong>Precision Landing:</strong> Developed ArUco marker-based landing algorithms, improving landing accuracy by 5% and reducing landing time by 10% in >4m/s windy conditions.</li>
+            <li><strong>Precision Landing:</strong> Developed ArUco marker-based landing algorithms, improving landing accuracy by 5% and reducing landing time by 10% in &gt;4m/s windy conditions.</li>
             <li><strong>Drone Geofencing:</strong> Engineered geofencing algorithms that reduced safety breach incidents by 90%.</li>
           </ul>
+          <div class="role-tech-stack">
+            <span class="role-tech-pill">ROS / ROS2</span>
+            <span class="role-tech-pill">C++</span>
+            <span class="role-tech-pill">Python</span>
+            <span class="role-tech-pill">OpenCV / ArUco</span>
+            <span class="role-tech-pill">DJI Dock 2/3</span>
+            <span class="role-tech-pill">Thermal Vision</span>
+            <span class="role-tech-pill">MQTT</span>
+          </div>
           <div class="exp-links">
             <button type="button" class="media-btn video-toggle-btn" data-target="video-korial" data-src="https://www.youtube.com/embed/X5uKMhrCvnU">
               <i class="fa-solid fa-circle-play"></i> Preview: Korial – Drone Inspection
@@ -492,7 +1380,7 @@
         </div>
 
         <!-- Wingcopter -->
-        <div class="exp-card">
+        <div class="exp-card" data-skills="C++,Python,ROS / ROS2,MAVROS,PyTorch,TensorRT,OpenCV,Gazebo,Git">
           <div class="exp-header">
             <span class="exp-role">Software Engineer AI</span>
             <span class="exp-date">12/2022 – 05/2024</span>
@@ -500,9 +1388,18 @@
           <div class="exp-company">Wingcopter GmbH · Darmstadt, Germany</div>
           <ul>
             <li><strong>UAV Landing Spot Detection:</strong> Trained deep learning models for semantic segmentation with SOTA accuracy; deployed models on Jetson Xavier via TensorRT, improving inference time by 80%.</li>
-            <li><strong>DAA & MAVROS:</strong> Developed and maintained ROS packages for flight path control in C++ and Python.</li>
-            <li><strong>CI/CD & Monitoring:</strong> Developed a system monitor that improved error detection by 20%, and reduced automated testing time by 15% through GitHub CI/CD optimizations.</li>
+            <li><strong>DAA &amp; MAVROS:</strong> Developed and maintained ROS packages for flight path control in C++ and Python.</li>
+            <li><strong>CI/CD &amp; Monitoring:</strong> Developed a system monitor that improved error detection by 20%, and reduced automated testing time by 15% through GitHub CI/CD optimizations.</li>
           </ul>
+          <div class="role-tech-stack">
+            <span class="role-tech-pill">PyTorch</span>
+            <span class="role-tech-pill">TensorRT</span>
+            <span class="role-tech-pill">Jetson Xavier</span>
+            <span class="role-tech-pill">ROS / MAVROS</span>
+            <span class="role-tech-pill">C++</span>
+            <span class="role-tech-pill">Python</span>
+            <span class="role-tech-pill">GitHub Actions CI/CD</span>
+          </div>
           <div class="exp-links">
             <button type="button" class="media-btn video-toggle-btn" data-target="video-wingcopter" data-src="https://www.youtube.com/embed/P8U9CUtVR0Y">
               <i class="fa-solid fa-circle-play"></i> Preview: Wingcopter – Drone Delivery
@@ -515,7 +1412,7 @@
         </div>
 
         <!-- DMG MORI -->
-        <div class="exp-card">
+        <div class="exp-card" data-skills="Python,Docker,gRPC / Protobuf,TCP / UDP,Git">
           <div class="exp-header">
             <span class="exp-role">Application Software Developer</span>
             <span class="exp-date">07/2021 – 11/2022</span>
@@ -525,10 +1422,17 @@
             <li><strong>Backend Communication:</strong> Developed cloud-based CNC-to-operator data transfer systems using Docker, Python, gRPC, and TCP/UDP.</li>
             <li><strong>Cloud Deployment:</strong> Deployed applications to Azure IoT Platform and managed artifact pipelines via Artifactory.</li>
           </ul>
+          <div class="role-tech-stack">
+            <span class="role-tech-pill">Python</span>
+            <span class="role-tech-pill">Docker</span>
+            <span class="role-tech-pill">gRPC / Protobuf</span>
+            <span class="role-tech-pill">TCP / UDP</span>
+            <span class="role-tech-pill">Azure IoT</span>
+          </div>
         </div>
 
         <!-- Duespohl Maschinenbau -->
-        <div class="exp-card">
+        <div class="exp-card" data-skills="C++,Qt / QML,OpenCV,3D Vision,Git">
           <div class="exp-header">
             <span class="exp-role">Robotics Software Engineer</span>
             <span class="exp-date">01/2018 – 06/2021</span>
@@ -539,6 +1443,13 @@
             <li><strong>3D Vision:</strong> Developed geometry-based object recognition algorithms for 2D point cloud data (improving accuracy by 50%) and optimized performance by 40% with OpenMP multithreading.</li>
             <li><strong>Robot Calibration:</strong> Programmed Mitsubishi RV2F robots and created a calibration technique that improved repeatability by 10%.</li>
           </ul>
+          <div class="role-tech-stack">
+            <span class="role-tech-pill">C++</span>
+            <span class="role-tech-pill">Qt / QML</span>
+            <span class="role-tech-pill">3D Point Clouds</span>
+            <span class="role-tech-pill">OpenMP</span>
+            <span class="role-tech-pill">Mitsubishi RV2F</span>
+          </div>
           <div class="exp-links">
             <button type="button" class="media-btn video-toggle-btn" data-target="video-duespohl" data-src="https://www.youtube.com/embed/pAPmkqw3euc?start=94">
               <i class="fa-solid fa-circle-play"></i> Preview: Duespohl Maschinenbau (01:34)
@@ -551,7 +1462,7 @@
         </div>
 
         <!-- Fraunhofer IPA -->
-        <div class="exp-card">
+        <div class="exp-card" data-skills="C++,Python,ROS / ROS2,OMPL,Gazebo,Docker">
           <div class="exp-header">
             <span class="exp-role">Research Assistant</span>
             <span class="exp-date">04/2015 – 12/2017</span>
@@ -561,6 +1472,13 @@
             <li><strong>AI Manufacturing:</strong> Built an AI-based solution for optimal workpiece positioning on a 2DOF rotary table and automated welding path generation using RRT*.</li>
             <li><strong>Cloud Navigation:</strong> Built a cloud deployment system for ROS navigation packages using Docker, reducing deployment time by 50%.</li>
           </ul>
+          <div class="role-tech-stack">
+            <span class="role-tech-pill">ROS</span>
+            <span class="role-tech-pill">OMPL (RRT*)</span>
+            <span class="role-tech-pill">C++</span>
+            <span class="role-tech-pill">Python</span>
+            <span class="role-tech-pill">Docker</span>
+          </div>
           <div class="exp-links">
             <a href="https://www.sciencedirect.com/science/article/pii/S2212827118302993" target="_blank" rel="noopener noreferrer" class="media-btn">
               <i class="fa-solid fa-file-lines"></i> Research Paper: Procedia CIRP (ScienceDirect) <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i>
@@ -569,61 +1487,81 @@
         </div>
 
         <!-- Tata Consultancy Services -->
-        <div class="exp-card">
+        <div class="exp-card" data-skills="Python,Git">
           <div class="exp-header">
             <span class="exp-role">Software Quality Assurance Engineer</span>
             <span class="exp-date">09/2012 – 09/2014</span>
           </div>
           <div class="exp-company">Tata Consultancy Services · Kolkata, India</div>
           <ul>
-            <li><strong>QA & Automation:</strong> Tested UNIX-based mainframe backend systems and multi-page web apps for a global banking client; created Python test automation scripts.</li>
+            <li><strong>QA &amp; Automation:</strong> Tested UNIX-based mainframe backend systems and multi-page web apps for a global banking client; created Python test automation scripts.</li>
             <li><strong>Team Leadership:</strong> Led a team of QA engineers as the Single Point of Contact (SPOC) for client and onshore teams.</li>
           </ul>
+          <div class="role-tech-stack">
+            <span class="role-tech-pill">Python Automation</span>
+            <span class="role-tech-pill">UNIX Mainframe</span>
+            <span class="role-tech-pill">QA Leadership</span>
+          </div>
         </div>
       </section>
 
       <!-- Education Section -->
-      <section>
+      <section id="education">
         <h2><i class="fa-solid fa-graduation-cap"></i> Education</h2>
-        <div class="simple-item">
-          <div>
-            <div class="simple-title">M.Sc. in Autonomous Systems</div>
-            <div class="simple-subtitle">Hochschule Bonn-Rhein-Sieg · Bonn, Germany</div>
+        <div class="card-panel">
+          <div class="simple-item">
+            <div>
+              <div class="simple-title">M.Sc. in Autonomous Systems</div>
+              <div class="simple-subtitle">Hochschule Bonn-Rhein-Sieg · Bonn, Germany</div>
+            </div>
+            <span class="exp-date">2014 – 2017</span>
           </div>
-          <span class="exp-date">2014 – 2017</span>
-        </div>
-        <div class="simple-item">
-          <div>
-            <div class="simple-title">B.Tech in Electronics and Instrumentation</div>
-            <div class="simple-subtitle">West Bengal University of Technology · Kolkata, India</div>
+          <div class="simple-item">
+            <div>
+              <div class="simple-title">B.Tech in Electronics and Instrumentation</div>
+              <div class="simple-subtitle">West Bengal University of Technology · Kolkata, India</div>
+            </div>
+            <span class="exp-date">2008 – 2012</span>
           </div>
-          <span class="exp-date">2008 – 2012</span>
         </div>
       </section>
 
       <!-- Publications & Awards Section -->
-      <section>
-        <h2><i class="fa-solid fa-award"></i> Publications & Awards</h2>
-        <div class="simple-item">
-          <div>
-            <div class="simple-title">
-              <a href="https://www.sciencedirect.com/science/article/pii/S2212827118302993" target="_blank" rel="noopener noreferrer">
-                Automatic Close-optimal Workpiece Positioning for Robotic Manufacturing
-              </a>
+      <section id="publications">
+        <h2><i class="fa-solid fa-award"></i> Publications &amp; Awards</h2>
+        <div class="card-panel">
+          <div class="simple-item">
+            <div>
+              <div class="simple-title">
+                <a href="https://www.sciencedirect.com/science/article/pii/S2212827118302993" target="_blank" rel="noopener noreferrer">
+                  Automatic Close-optimal Workpiece Positioning for Robotic Manufacturing
+                </a>
+              </div>
+              <div class="simple-subtitle">Procedia CIRP (Vol. 72) · Diaz Posada, J., Mukherjee, P., &amp; Verl, A. (Fraunhofer IPA)</div>
+              <div class="pub-actions-row">
+                <a href="https://www.sciencedirect.com/science/article/pii/S2212827118302993" target="_blank" rel="noopener noreferrer" class="media-btn pub-link-inline">
+                  <i class="fa-solid fa-book-open"></i> Read Paper on ScienceDirect <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i>
+                </a>
+                <button type="button" id="toggle-abstract-btn" class="media-btn">
+                  <i class="fa-solid fa-file-lines"></i> Summary
+                </button>
+                <button type="button" id="copy-bibtex-btn" class="media-btn">
+                  <i class="fa-solid fa-quote-right"></i> Copy BibTeX
+                </button>
+              </div>
+              <div id="paper-abstract-box" class="abstract-box">
+                <strong>Research Overview:</strong> Presents an automated method for computing close-optimal workpiece positioning on a 2-DOF rotary table paired with robotic manipulators, combining reachability/manipulability optimization and sampling-based motion planning (RRT*) for automated robotic manufacturing and welding tasks at Fraunhofer IPA.
+              </div>
             </div>
-            <div class="simple-subtitle">Procedia CIRP · Diaz Posada, J., Mukherjee, P., &amp; Verl, A. (Fraunhofer IPA)</div>
-            <a href="https://www.sciencedirect.com/science/article/pii/S2212827118302993" target="_blank" rel="noopener noreferrer" class="pub-link-inline">
-              <i class="fa-solid fa-book-open"></i> Read Paper on ScienceDirect <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i>
-            </a>
+            <span class="exp-date">2018</span>
           </div>
-          <span class="exp-date">2018</span>
-        </div>
-        <div class="simple-item">
-          <div>
-            <div class="simple-title">Hacker's Choice Award</div>
-            <div class="simple-subtitle">Stuttgart Hackathon</div>
+          <div class="simple-item">
+            <div>
+              <div class="simple-title">Hacker's Choice Award</div>
+              <div class="simple-subtitle">Stuttgart Hackathon · Stuttgart, Germany</div>
+            </div>
+            <span class="exp-date">2016</span>
           </div>
-          <span class="exp-date">2016</span>
         </div>
       </section>
 
@@ -631,29 +1569,256 @@
   </div>
 
   <footer>
-    <p>© 2026 Poulastya Mukherjee · Styled with GitHub Dark aesthetic</p>
+    <p>© 2026 Poulastya Mukherjee · Built for GitHub Pages · Robotics &amp; AI Portfolio</p>
   </footer>
 
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-notification" role="status" aria-live="polite">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-message">Copied to clipboard!</span>
+  </div>
+
   <script>
+    // Helper: Toast Notification
+    var toastTimer = null;
+    function showToast(message) {
+      var toast = document.getElementById('toast');
+      var toastMsg = document.getElementById('toast-message');
+      if (!toast || !toastMsg) return;
+      toastMsg.textContent = message;
+      toast.classList.add('show');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(function() {
+        toast.classList.remove('show');
+      }, 2600);
+    }
+
+    // Helper: Copy text with fallback
+    function copyTextToClipboard(text, successMsg) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() {
+          showToast(successMsg);
+        }).catch(function() {
+          fallbackCopy(text, successMsg);
+        });
+      } else {
+        fallbackCopy(text, successMsg);
+      }
+    }
+
+    function fallbackCopy(text, successMsg) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast(successMsg);
+      } catch (e) {
+        showToast('Copy not supported in this frame');
+      }
+      document.body.removeChild(ta);
+    }
+
+    // 1. Inline Video Preview Toggles
+    function toggleVideoContainer(button) {
+      var targetId = button.getAttribute('data-target');
+      var videoSrc = button.getAttribute('data-src');
+      var container = document.getElementById(targetId);
+      if (!container) return;
+
+      var isOpen = container.classList.contains('active');
+      if (isOpen) {
+        container.classList.remove('active');
+        container.innerHTML = '';
+        button.innerHTML = button.innerHTML.replace('Hide Preview:', 'Preview:');
+      } else {
+        container.classList.add('active');
+        container.innerHTML = '<iframe src="' + videoSrc + '" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+        button.innerHTML = button.innerHTML.replace('Preview:', 'Hide Preview:');
+      }
+    }
+
     document.querySelectorAll('.video-toggle-btn').forEach(function(button) {
       button.addEventListener('click', function() {
-        var targetId = button.getAttribute('data-target');
-        var videoSrc = button.getAttribute('data-src');
-        var container = document.getElementById(targetId);
-        if (!container) return;
+        toggleVideoContainer(button);
+      });
+    });
 
-        var isOpen = container.classList.contains('active');
-        if (isOpen) {
-          container.classList.remove('active');
-          container.innerHTML = '';
-          button.innerHTML = button.innerHTML.replace('Hide Preview:', 'Preview:');
-        } else {
-          container.classList.add('active');
-          container.innerHTML = '<iframe src="' + videoSrc + '" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
-          button.innerHTML = button.innerHTML.replace('Preview:', 'Hide Preview:');
+    // 2. Featured Demo Grid "Watch Inline" Jump & Open
+    document.querySelectorAll('.demo-jump-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var expTargetId = btn.getAttribute('data-exp-target');
+        var matchingToggleBtn = document.querySelector('.video-toggle-btn[data-target="' + expTargetId + '"]');
+        var targetContainer = document.getElementById(expTargetId);
+        if (matchingToggleBtn && targetContainer) {
+          if (!targetContainer.classList.contains('active')) {
+            toggleVideoContainer(matchingToggleBtn);
+          }
+          matchingToggleBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       });
     });
+
+    // 3. Interactive Skill-to-Experience Filtering
+    var activeSkill = null;
+    var skillTags = document.querySelectorAll('.skill-filter-tag');
+    var expCards = document.querySelectorAll('.exp-card');
+    var filterBar = document.getElementById('filter-status-bar');
+    var filterText = document.getElementById('filter-status-text');
+    var clearFilterBtn = document.getElementById('clear-filter-btn');
+
+    function applySkillFilter(skill) {
+      if (activeSkill === skill || !skill) {
+        activeSkill = null;
+        skillTags.forEach(function(t) { t.classList.remove('active-filter'); });
+        expCards.forEach(function(card) {
+          card.classList.remove('filtered-out', 'filtered-match');
+        });
+        if (filterBar) filterBar.classList.remove('visible');
+        return;
+      }
+
+      activeSkill = skill;
+      skillTags.forEach(function(t) {
+        if (t.getAttribute('data-skill') === skill) {
+          t.classList.add('active-filter');
+        } else {
+          t.classList.remove('active-filter');
+        }
+      });
+
+      var matchCount = 0;
+      expCards.forEach(function(card) {
+        var cardSkills = (card.getAttribute('data-skills') || '').split(',');
+        if (cardSkills.indexOf(skill) !== -1) {
+          card.classList.remove('filtered-out');
+          card.classList.add('filtered-match');
+          matchCount++;
+        } else {
+          card.classList.add('filtered-out');
+          card.classList.remove('filtered-match');
+        }
+      });
+
+      if (filterBar && filterText) {
+        filterText.textContent = 'Filtered by "' + skill + '" — showing ' + matchCount + ' matching role' + (matchCount === 1 ? '' : 's');
+        filterBar.classList.add('visible');
+      }
+    }
+
+    skillTags.forEach(function(tag) {
+      tag.addEventListener('click', function() {
+        var skill = tag.getAttribute('data-skill');
+        applySkillFilter(skill);
+      });
+    });
+
+    if (clearFilterBtn) {
+      clearFilterBtn.addEventListener('click', function() {
+        applySkillFilter(null);
+      });
+    }
+
+    // 4. Copy Email & Phone Reveal
+    var copyEmailCta = document.getElementById('copy-email-cta');
+    if (copyEmailCta) {
+      copyEmailCta.addEventListener('click', function() {
+        copyTextToClipboard(copyEmailCta.getAttribute('data-email'), 'Email poulastyab@gmail.com copied!');
+      });
+    }
+
+    document.querySelectorAll('.copy-text-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        copyTextToClipboard(btn.getAttribute('data-copy'), 'Copied to clipboard!');
+      });
+    });
+
+    var togglePhoneBtn = document.getElementById('toggle-phone-btn');
+    var phoneDisplay = document.getElementById('phone-display');
+    if (togglePhoneBtn && phoneDisplay) {
+      togglePhoneBtn.addEventListener('click', function() {
+        var isRevealed = togglePhoneBtn.getAttribute('data-revealed') === 'true';
+        if (isRevealed) {
+          phoneDisplay.textContent = togglePhoneBtn.getAttribute('data-masked');
+          togglePhoneBtn.textContent = 'Show';
+          togglePhoneBtn.setAttribute('data-revealed', 'false');
+        } else {
+          var fullPhone = togglePhoneBtn.getAttribute('data-full');
+          phoneDisplay.textContent = fullPhone;
+          togglePhoneBtn.textContent = 'Hide';
+          togglePhoneBtn.setAttribute('data-revealed', 'true');
+          copyTextToClipboard(fullPhone, 'Phone number revealed & copied!');
+        }
+      });
+    }
+
+    // 5. Publication Abstract Toggle & BibTeX Copy
+    var toggleAbstractBtn = document.getElementById('toggle-abstract-btn');
+    var abstractBox = document.getElementById('paper-abstract-box');
+    if (toggleAbstractBtn && abstractBox) {
+      toggleAbstractBtn.addEventListener('click', function() {
+        abstractBox.classList.toggle('active');
+      });
+    }
+
+    var copyBibtexBtn = document.getElementById('copy-bibtex-btn');
+    if (copyBibtexBtn) {
+      copyBibtexBtn.addEventListener('click', function() {
+        var bibtex = '@article{diazposada2018automatic,\n  title={Automatic Close-optimal Workpiece Positioning for Robotic Manufacturing},\n  author={Diaz Posada, Julian and Mukherjee, Poulastya and Verl, Alexander},\n  journal={Procedia CIRP},\n  volume={72},\n  pages={195--200},\n  year={2018},\n  publisher={Elsevier},\n  url={https://www.sciencedirect.com/science/article/pii/S2212827118302993}\n}';
+        copyTextToClipboard(bibtex, 'BibTeX citation copied to clipboard!');
+      });
+    }
+
+    // 6. Print / Save CV Buttons
+    function triggerPrint() {
+      showToast('Opening print / PDF dialog...');
+      setTimeout(function() {
+        window.print();
+      }, 250);
+    }
+
+    var navPrintBtn = document.getElementById('nav-print-btn');
+    var sidebarPrintBtn = document.getElementById('sidebar-print-btn');
+    if (navPrintBtn) navPrintBtn.addEventListener('click', triggerPrint);
+    if (sidebarPrintBtn) sidebarPrintBtn.addEventListener('click', triggerPrint);
+
+    // 7. Theme Switcher (Dark / Light)
+    var themeToggleBtn = document.getElementById('theme-toggle-btn');
+    var themeIcon = document.getElementById('theme-icon');
+    var themeLabel = document.getElementById('theme-label');
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      if (themeIcon && themeLabel) {
+        if (theme === 'light') {
+          themeIcon.className = 'fa-solid fa-moon';
+          themeLabel.textContent = 'Dark Mode';
+        } else {
+          themeIcon.className = 'fa-solid fa-sun';
+          themeLabel.textContent = 'Light Mode';
+        }
+      }
+      try {
+        localStorage.setItem('pm_portfolio_theme', theme);
+      } catch (e) {}
+    }
+
+    try {
+      var savedTheme = localStorage.getItem('pm_portfolio_theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        setTheme(savedTheme);
+      }
+    } catch (e) {}
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-theme') || 'dark';
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
+    }
   </script>
 </body>
 </html>
