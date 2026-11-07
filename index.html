@@ -9,6 +9,7 @@
   <meta property="og:description" content="12+ years building autonomous drones, semiconductor robotics, 3D vision, and edge AI systems at Lam Research, Energy Robotics, Wingcopter, DMG MORI, Duespohl, and Fraunhofer IPA." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://poulastyamukherjee.github.io/" />
+  <meta property="og:image" content="https://i.ytimg.com/vi/P8U9CUtVR0Y/hqdefault.jpg" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     :root {
@@ -23,7 +24,8 @@
       --accent: #58a6ff;
       --accent-hover: #1f6feb;
       --accent-soft: rgba(88, 166, 255, 0.12);
-      --yt-red: #ff4e45;
+      --yt-red: #ff0000;
+      --yt-red-soft: #ff4e45;
       --paper-green: #3fb950;
       --lead-gold: #d29922;
       --nav-bg: rgba(13, 17, 23, 0.88);
@@ -42,7 +44,8 @@
       --accent: #0969da;
       --accent-hover: #0550ae;
       --accent-soft: rgba(9, 105, 218, 0.1);
-      --yt-red: #cf222e;
+      --yt-red: #cc0000;
+      --yt-red-soft: #cf222e;
       --paper-green: #1a7f37;
       --lead-gold: #9a6700;
       --nav-bg: rgba(246, 248, 250, 0.9);
@@ -431,11 +434,11 @@
       color: var(--text-muted);
     }
 
-    /* --- FEATURED VIDEO DEMOS GRID --- */
+    /* --- FEATURED VIDEO DEMOS GRID WITH YOUTUBE THUMBNAILS --- */
     .demos-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+      gap: 1.1rem;
     }
 
     .demo-card {
@@ -456,65 +459,125 @@
 
     .demo-visual {
       position: relative;
-      height: 148px;
-      background: linear-gradient(135deg, #121d2f 0%, #1b2838 50%, #0f172a 100%);
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      background: #090d13;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 0.9rem 1rem;
+      padding: 0.85rem 1rem;
       border-bottom: 1px solid var(--border-color);
       overflow: hidden;
+      cursor: pointer;
     }
 
-    .demo-visual-pattern {
+    .demo-thumb-img {
       position: absolute;
-      right: -10px;
-      bottom: -15px;
-      font-size: 5.5rem;
-      color: rgba(88, 166, 255, 0.1);
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      max-width: 100%;
+      transition: transform 0.35s ease, filter 0.35s ease;
+      filter: brightness(0.78);
+    }
+
+    .demo-visual:hover .demo-thumb-img {
+      transform: scale(1.04);
+      filter: brightness(0.92);
+    }
+
+    .demo-thumb-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(13, 17, 23, 0.75) 0%,
+        rgba(13, 17, 23, 0.15) 45%,
+        rgba(13, 17, 23, 0.88) 100%
+      );
       pointer-events: none;
+    }
+
+    .demo-play-button-center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 58px;
+      height: 40px;
+      background: rgba(255, 0, 0, 0.9);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+      transition: transform 0.2s ease, background 0.2s ease;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .demo-visual:hover .demo-play-button-center {
+      transform: translate(-50%, -50%) scale(1.1);
+      background: #ff0000;
+    }
+
+    .demo-visual iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      z-index: 5;
     }
 
     .demo-badge-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 1;
+      z-index: 2;
+      position: relative;
     }
 
     .demo-company-pill {
-      background: rgba(13, 17, 23, 0.78);
+      background: rgba(13, 17, 23, 0.85);
       color: #f0f6fc;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       padding: 0.2rem 0.6rem;
       border-radius: 20px;
       font-size: 0.74rem;
       font-weight: 600;
+      backdrop-filter: blur(4px);
     }
 
     .demo-impact-pill {
-      background: rgba(63, 185, 80, 0.2);
+      background: rgba(22, 27, 34, 0.88);
       color: #56d364;
-      border: 1px solid rgba(63, 185, 80, 0.4);
+      border: 1px solid rgba(63, 185, 80, 0.5);
       padding: 0.18rem 0.55rem;
       border-radius: 20px;
       font-size: 0.72rem;
       font-weight: 600;
+      backdrop-filter: blur(4px);
     }
 
     .demo-visual-title {
-      z-index: 1;
+      z-index: 2;
+      position: relative;
       color: #f0f6fc;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 0.96rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
     }
 
     .demo-visual-title i {
-      color: var(--yt-red);
-      font-size: 1.2rem;
+      color: var(--yt-red-soft);
+      font-size: 1.15rem;
     }
 
     .demo-body {
@@ -740,12 +803,85 @@
       font-family: monospace;
     }
 
+    /* Experience Inline Video Thumbnail Card */
+    .exp-video-showcase {
+      margin-top: 1.05rem;
+      padding-top: 0.95rem;
+      border-top: 1px dashed var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .exp-thumb-box {
+      position: relative;
+      width: 168px;
+      aspect-ratio: 16 / 9;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      background: #000;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .exp-thumb-box img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.25s ease, filter 0.25s ease;
+      filter: brightness(0.84);
+    }
+
+    .exp-thumb-box:hover img {
+      transform: scale(1.05);
+      filter: brightness(1);
+    }
+
+    .exp-thumb-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 28px;
+      border-radius: 7px;
+      background: rgba(255, 0, 0, 0.9);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      pointer-events: none;
+    }
+
+    .exp-video-meta {
+      flex: 1;
+      min-width: 210px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .exp-video-title {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-bright);
+    }
+
     /* Media & Paper Action Links inside Cards */
     .exp-links {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 0.6rem;
+    }
+
+    .exp-links-standalone {
       margin-top: 1rem;
       padding-top: 0.9rem;
       border-top: 1px dashed var(--border-color);
@@ -776,7 +912,7 @@
 
     .media-btn i.fa-youtube,
     .media-btn i.fa-circle-play {
-      color: var(--yt-red);
+      color: var(--yt-red-soft);
     }
 
     .media-btn i.fa-file-lines,
@@ -971,6 +1107,9 @@
       .nav-links {
         display: none;
       }
+      .exp-thumb-box {
+        width: 100%;
+      }
     }
 
     /* Clean PDF / Print Resume Layout */
@@ -982,6 +1121,7 @@
       }
       .top-nav,
       .demos-section,
+      .exp-video-showcase,
       .exp-links,
       .sidebar-cta-group,
       .inline-mini-btn,
@@ -1072,12 +1212,17 @@
       <ul class="contact-list">
         <li>
           <i class="fa-solid fa-location-dot"></i>
-          <span>Bengaluru, India </span>
+          <span>Bengaluru, India / Darmstadt, Germany</span>
         </li>
         <li>
           <i class="fa-solid fa-envelope"></i>
           <a href="mailto:poulastyab@gmail.com">poulastyab@gmail.com</a>
           <button type="button" class="inline-mini-btn copy-text-btn" data-copy="poulastyab@gmail.com" title="Copy email address">Copy</button>
+        </li>
+        <li>
+          <i class="fa-solid fa-phone"></i>
+          <span id="phone-display">+49 176 •••••658</span>
+          <button type="button" id="toggle-phone-btn" class="inline-mini-btn" data-full="+49 176 44431658" data-masked="+49 176 •••••658">Show</button>
         </li>
         <li>
           <i class="fa-brands fa-linkedin"></i>
@@ -1124,15 +1269,17 @@
         </div>
       </section>
 
-      <!-- Featured Robotics & AI Video Demos Section -->
+      <!-- Featured Robotics & AI Video Demos Section (With Real YouTube Thumbnails) -->
       <section id="demos" class="demos-section">
         <h2><i class="fa-solid fa-clapperboard"></i> Featured Robotics &amp; AI Systems in Action</h2>
         <div class="demos-grid">
 
           <!-- Demo 1: Lam Research Dextro -->
           <div class="demo-card">
-            <div class="demo-visual">
-              <i class="fa-solid fa-microchip demo-visual-pattern"></i>
+            <div class="demo-visual demo-thumb-trigger" data-embed-src="https://www.youtube.com/embed/cOcYCINuZDs?autoplay=1" title="Click to play Lam Research Dextro video">
+              <img class="demo-thumb-img" src="https://i.ytimg.com/vi/cOcYCINuZDs/hqdefault.jpg" alt="Lam Research Dextro Robotics Platform YouTube Thumbnail" loading="lazy" />
+              <div class="demo-thumb-gradient"></div>
+              <div class="demo-play-button-center"><i class="fa-solid fa-play"></i></div>
               <div class="demo-badge-row">
                 <span class="demo-company-pill">Lam Research · 2026</span>
                 <span class="demo-impact-pill">-10% Maintenance Time</span>
@@ -1159,8 +1306,10 @@
 
           <!-- Demo 2: Energy Robotics / Korial -->
           <div class="demo-card">
-            <div class="demo-visual">
-              <i class="fa-solid fa-helicopter demo-visual-pattern"></i>
+            <div class="demo-visual demo-thumb-trigger" data-embed-src="https://www.youtube.com/embed/X5uKMhrCvnU?autoplay=1" title="Click to play Korial Drone Inspection video">
+              <img class="demo-thumb-img" src="https://i.ytimg.com/vi/X5uKMhrCvnU/hqdefault.jpg" alt="Korial Autonomous Drone Inspection YouTube Thumbnail" loading="lazy" />
+              <div class="demo-thumb-gradient"></div>
+              <div class="demo-play-button-center"><i class="fa-solid fa-play"></i></div>
               <div class="demo-badge-row">
                 <span class="demo-company-pill">Energy Robotics (Korial)</span>
                 <span class="demo-impact-pill">3× Faster Inspection</span>
@@ -1187,8 +1336,10 @@
 
           <!-- Demo 3: Wingcopter -->
           <div class="demo-card">
-            <div class="demo-visual">
-              <i class="fa-solid fa-plane-up demo-visual-pattern"></i>
+            <div class="demo-visual demo-thumb-trigger" data-embed-src="https://www.youtube.com/embed/P8U9CUtVR0Y?autoplay=1" title="Click to play Wingcopter Drone Delivery video">
+              <img class="demo-thumb-img" src="https://i.ytimg.com/vi/P8U9CUtVR0Y/hqdefault.jpg" alt="Wingcopter Autonomous Delivery Drone YouTube Thumbnail" loading="lazy" />
+              <div class="demo-thumb-gradient"></div>
+              <div class="demo-play-button-center"><i class="fa-solid fa-play"></i></div>
               <div class="demo-badge-row">
                 <span class="demo-company-pill">Wingcopter GmbH</span>
                 <span class="demo-impact-pill">80% Faster Inference</span>
@@ -1215,8 +1366,10 @@
 
           <!-- Demo 4: Duespohl Maschinenbau -->
           <div class="demo-card">
-            <div class="demo-visual">
-              <i class="fa-solid fa-industry demo-visual-pattern"></i>
+            <div class="demo-visual demo-thumb-trigger" data-embed-src="https://www.youtube.com/embed/pAPmkqw3euc?start=94&autoplay=1" title="Click to play Duespohl Maschinenbau video">
+              <img class="demo-thumb-img" src="https://i.ytimg.com/vi/pAPmkqw3euc/hqdefault.jpg" alt="Duespohl Maschinenbau Industrial Robotics YouTube Thumbnail" loading="lazy" />
+              <div class="demo-thumb-gradient"></div>
+              <div class="demo-play-button-center"><i class="fa-solid fa-play"></i></div>
               <div class="demo-badge-row">
                 <span class="demo-company-pill">Duespohl Maschinenbau</span>
                 <span class="demo-impact-pill">+50% Vision Accuracy</span>
@@ -1335,13 +1488,22 @@
             <span class="role-tech-pill">Universal Robots (URP)</span>
             <span class="role-tech-pill">HMI Backend</span>
           </div>
-          <div class="exp-links">
-            <button type="button" class="media-btn video-toggle-btn" data-target="video-lam" data-src="https://www.youtube.com/embed/cOcYCINuZDs">
-              <i class="fa-solid fa-circle-play"></i> Preview: Lam Research Dextro
-            </button>
-            <a href="https://www.youtube.com/watch?v=cOcYCINuZDs" target="_blank" rel="noopener noreferrer" class="media-btn">
-              <i class="fa-brands fa-youtube"></i> Watch on YouTube <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i>
-            </a>
+          <div class="exp-video-showcase">
+            <div class="exp-thumb-box exp-thumb-click" data-target="video-lam" title="Click to toggle inline video player">
+              <img src="https://i.ytimg.com/vi/cOcYCINuZDs/hqdefault.jpg" alt="Lam Research Dextro Thumbnail" loading="lazy" />
+              <div class="exp-thumb-play"><i class="fa-solid fa-play"></i></div>
+            </div>
+            <div class="exp-video-meta">
+              <div class="exp-video-title">Lam Research Dextro – Wafer Fab Maintenance Robotics</div>
+              <div class="exp-links">
+                <button type="button" class="media-btn video-toggle-btn" data-target="video-lam" data-src="https://www.youtube.com/embed/cOcYCINuZDs">
+                  <i class="fa-solid fa-circle-play"></i> Preview: Lam Research Dextro
+                </button>
+                <a href="https://www.youtube.com/watch?v=cOcYCINuZDs" target="_blank" rel="noopener noreferrer" class="media-btn">
+                  <i class="fa-brands fa-youtube"></i> Watch on YouTube <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i>
+                </a>
+              </div>
+            </div>
           </div>
           <div id="video-lam" class="video-embed-container"></div>
         </div>
@@ -1368,13 +1530,22 @@
             <span class="role-tech-pill">Thermal Vision</span>
             <span class="role-tech-pill">MQTT</span>
           </div>
-          <div class="exp-links">
-            <button type="button" class="media-btn video-toggle-btn" data-target="video-korial" data-src="https://www.youtube.com/embed/X5uKMhrCvnU">
-              <i class="fa-solid fa-circle-play"></i> Preview: Korial – Drone Inspection
-            </button>
-            <a href="https://www.youtube.com/watch?v=X5uKMhrCvnU" target="_blank" rel="noopener noreferrer" class="media-btn">
-              <i class="fa-brands fa-youtube"></i> Watch on YouTube <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i>
-            </a>
+          <div class="exp-video-showcase">
+            <div class="exp-thumb-box exp-thumb-click" data-target="video-korial" title="Click to toggle inline video player">
+              <img src="https://i.ytimg.com/vi/X5uKMhrCvnU/hqdefault.jpg" alt="Korial Drone Inspection Thumbnail" loading="lazy" />
+              <div class="exp-thumb-play"><i class="fa-solid fa-play"></i></div>
+            </div>
+            <div class="exp-video-meta">
+              <div class="exp-video-title">Korial – Autonomous Drone Inspection Deployment</div>
+              <div class="exp-links">
+                <button type="button" class="media-btn video-toggle-btn" data-target="video-korial" data-src="https://www.youtube.com/embed/X5uKMhrCvnU">
+                  <i class="fa-solid fa-circle-play"></i> Preview: Korial – Drone Inspection
+                </button>
+                <a href="https://www.youtube.com/watch?v=X5uKMhrCvnU" target="_blank" rel="noopener noreferrer" class="media-btn">
+                  <i class="fa-brands fa-youtube"></i> Watch on YouTube <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i>
+                </a>
+              </div>
+            </div>
           </div>
           <div id="video-korial" class="video-embed-container"></div>
         </div>
@@ -1400,13 +1571,22 @@
             <span class="role-tech-pill">Python</span>
             <span class="role-tech-pill">GitHub Actions CI/CD</span>
           </div>
-          <div class="exp-links">
-            <button type="button" class="media-btn video-toggle-btn" data-target="video-wingcopter" data-src="https://www.youtube.com/embed/P8U9CUtVR0Y">
-              <i class="fa-solid fa-circle-play"></i> Preview: Wingcopter – Drone Delivery
-            </button>
-            <a href="https://www.youtube.com/watch?v=P8U9CUtVR0Y" target="_blank" rel="noopener noreferrer" class="media-btn">
-              <i class="fa-brands fa-youtube"></i> Watch on YouTube <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i>
-            </a>
+          <div class="exp-video-showcase">
+            <div class="exp-thumb-box exp-thumb-click" data-target="video-wingcopter" title="Click to toggle inline video player">
+              <img src="https://i.ytimg.com/vi/P8U9CUtVR0Y/hqdefault.jpg" alt="Wingcopter Drone Delivery Thumbnail" loading="lazy" />
+              <div class="exp-thumb-play"><i class="fa-solid fa-play"></i></div>
+            </div>
+            <div class="exp-video-meta">
+              <div class="exp-video-title">Wingcopter – Autonomous eVTOL Drone Delivery</div>
+              <div class="exp-links">
+                <button type="button" class="media-btn video-toggle-btn" data-target="video-wingcopter" data-src="https://www.youtube.com/embed/P8U9CUtVR0Y">
+                  <i class="fa-solid fa-circle-play"></i> Preview: Wingcopter – Drone Delivery
+                </button>
+                <a href="https://www.youtube.com/watch?v=P8U9CUtVR0Y" target="_blank" rel="noopener noreferrer" class="media-btn">
+                  <i class="fa-brands fa-youtube"></i> Watch on YouTube <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i>
+                </a>
+              </div>
+            </div>
           </div>
           <div id="video-wingcopter" class="video-embed-container"></div>
         </div>
@@ -1450,13 +1630,22 @@
             <span class="role-tech-pill">OpenMP</span>
             <span class="role-tech-pill">Mitsubishi RV2F</span>
           </div>
-          <div class="exp-links">
-            <button type="button" class="media-btn video-toggle-btn" data-target="video-duespohl" data-src="https://www.youtube.com/embed/pAPmkqw3euc?start=94">
-              <i class="fa-solid fa-circle-play"></i> Preview: Duespohl Maschinenbau (01:34)
-            </button>
-            <a href="https://www.youtube.com/watch?v=pAPmkqw3euc&t=94s" target="_blank" rel="noopener noreferrer" class="media-btn">
-              <i class="fa-brands fa-youtube"></i> Watch on YouTube <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i>
-            </a>
+          <div class="exp-video-showcase">
+            <div class="exp-thumb-box exp-thumb-click" data-target="video-duespohl" title="Click to toggle inline video player">
+              <img src="https://i.ytimg.com/vi/pAPmkqw3euc/hqdefault.jpg" alt="Duespohl Maschinenbau Robotics Thumbnail" loading="lazy" />
+              <div class="exp-thumb-play"><i class="fa-solid fa-play"></i></div>
+            </div>
+            <div class="exp-video-meta">
+              <div class="exp-video-title">Duespohl Maschinenbau GmbH – Industrial Robotics (Starts at 01:34)</div>
+              <div class="exp-links">
+                <button type="button" class="media-btn video-toggle-btn" data-target="video-duespohl" data-src="https://www.youtube.com/embed/pAPmkqw3euc?start=94">
+                  <i class="fa-solid fa-circle-play"></i> Preview: Duespohl Maschinenbau (01:34)
+                </button>
+                <a href="https://www.youtube.com/watch?v=pAPmkqw3euc&t=94s" target="_blank" rel="noopener noreferrer" class="media-btn">
+                  <i class="fa-brands fa-youtube"></i> Watch on YouTube <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i>
+                </a>
+              </div>
+            </div>
           </div>
           <div id="video-duespohl" class="video-embed-container"></div>
         </div>
@@ -1479,7 +1668,7 @@
             <span class="role-tech-pill">Python</span>
             <span class="role-tech-pill">Docker</span>
           </div>
-          <div class="exp-links">
+          <div class="exp-links exp-links-standalone">
             <a href="https://www.sciencedirect.com/science/article/pii/S2212827118302993" target="_blank" rel="noopener noreferrer" class="media-btn">
               <i class="fa-solid fa-file-lines"></i> Research Paper: Procedia CIRP (ScienceDirect) <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem;"></i>
             </a>
@@ -1622,7 +1811,7 @@
       document.body.removeChild(ta);
     }
 
-    // 1. Inline Video Preview Toggles
+    // 1. Inline Video Preview Toggles in Experience Cards
     function toggleVideoContainer(button) {
       var targetId = button.getAttribute('data-target');
       var videoSrc = button.getAttribute('data-src');
@@ -1644,6 +1833,33 @@
     document.querySelectorAll('.video-toggle-btn').forEach(function(button) {
       button.addEventListener('click', function() {
         toggleVideoContainer(button);
+      });
+    });
+
+    // Clicking the thumbnail inside an Experience card also toggles its inline player
+    document.querySelectorAll('.exp-thumb-click').forEach(function(thumb) {
+      thumb.addEventListener('click', function() {
+        var targetId = thumb.getAttribute('data-target');
+        var matchingBtn = document.querySelector('.video-toggle-btn[data-target="' + targetId + '"]');
+        if (matchingBtn) {
+          toggleVideoContainer(matchingBtn);
+        }
+      });
+    });
+
+    // Clicking a Featured Demo thumbnail plays the video directly inside that top card
+    document.querySelectorAll('.demo-thumb-trigger').forEach(function(visual) {
+      visual.addEventListener('click', function() {
+        if (visual.querySelector('iframe')) return;
+        var embedSrc = visual.getAttribute('data-embed-src');
+        if (!embedSrc) return;
+        var iframe = document.createElement('iframe');
+        iframe.src = embedSrc;
+        iframe.title = 'YouTube video player';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+        iframe.allowFullscreen = true;
+        visual.appendChild(iframe);
       });
     });
 
